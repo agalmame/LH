@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+{% block content%}
+<h2>Detail De Conge</h2>
+<div class="container" >
+   <div> <strong><p>Nature :</p></strong>{{object.nature}}</br>&nbsp;
+    <strong><p>Date De Demande :</p></strong> {{object.timeStamp}}</br>&nbsp;
+    <strong><p>Date De Debut :</p></strong>{{object.dateDebut}}</br>&nbsp;
+    <strong><p>Date De Fin :</p></strong>{{object.dateFin}}</br>&nbsp;
+       <strong><p>Etat De Conge:</p></strong>{{object.valide}} </br>&nbsp;
+   </div>
+     {% if object.valide == 'EN COURS' %}
+    <a role="button" class="btn btn-success" href="{% url 'congemodifier' object.pk %}">Modifier</a>&nbsp; | &nbsp; <a class="btn btn-danger" role="button" href="{% url 'congesupprimer' object.pk %}">Supprimer</a>
+     {% endif %}
+    {% if object.valide == 'VALIDE' %}
+    &nbsp; <a class="btn btn-danger" role="button" href="{% url 'attestation' object.pk %}">Attestation</a>
+    {% endif %}
+ </div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Supprimer Conge{% endblock %}
+
+{% block content %}
+<h2 style="color:red">Suppression</h2>
+<p>Vous Voulez Supprimer Ce conge</p>
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger" >Supprimer</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Les Demandes De Conge</h2>
+  <table style="width:80%" class="table">
+   <thead class="thead-dark">
+   <tr>
+    <th scope="col">Employe</th>
+    <th scope="col">Nature</th>
+    <th scope="col">Date Demande</th>
+    <th scope="col">Date Debut</th>
+    <th scope="col">Date Fin</th>
+    <th scope="col">Validation</th>
+   </tr>
+   </thead>
+{%for object in object_list%}
+   <tr>
+    <td><a href="{% url 'congereagire' object.pk %}">{{object.employee}}</a></td>
+    <td><p>{{object.nature}}</p></td>
+    <td><p>{{object.timeStamp}}</p></td>
+    <td><p>{{object.dateDebut}}</p></td>
+    <td><p>{{object.dateFin}}</p></td>
+    <td><p>{{object.valide}}</p> </td>
+    </tr>
+{% endfor %}
+   </table>
+{% endblock %}

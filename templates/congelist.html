@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+{% block content %}
+<h2>Votre Demandes</h2>
+  <table style="width:80%" class="table">
+   <thead class="thead-light">
+   <tr>
+    <th scope="col">Nature</th>
+    <th scope="col">Employe</th>
+    <th scope="col">Date Debut</th>
+    <th scope="col">Date Fin</th>
+    <th scope="col">Validation</th>
+   </tr>
+   </thead>
+{%for object in object_list%}
+   <tr>
+    <td><a href="{% url 'congedetail' object.pk %}">{{object.nature}}</a></td>
+    <td><p>{{object.employee}}</p></td>
+    <td><p>{{object.dateDebut}}</p></td>
+    <td><p>{{object.dateFin}}</p></td>
+    <td><p>{{object.valide}}</p> </td>
+    </tr>
+{% endfor %}
+   </table>
+{% endblock %}

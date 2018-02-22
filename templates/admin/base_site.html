@@ -1,0 +1,36 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Connecter |LH Administration{% endblock %}
+{% block extrastyle %}
+<style>
+
+html {
+    background-color: #c4dce8;
+}
+#header{
+   background-color: rgb(72, 50, 119);
+    }
+.module h2, .module caption, .inline-group h2 {
+     margin:50px
+     font-weight: 400;
+    font-size: 18px;
+    background: #4b9dc5
+    }
+#content-related .module h2 {
+    color: #ecf7f6;
+    background-color: slategrey;
+    }
+#content-related {
+    margin-right: -400px;
+
+}
+#content-main {
+    width: 102%;
+}
+</style>
+{% endblock %}
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">LH Administration</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

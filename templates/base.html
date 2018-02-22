@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <link rel="stylesheet" href="/resources/demos/style.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+       <title>LafargeHolcim|{% block title %}{% endblock %}</title>
+      <style>
+       body {
+            background: #dee2e6;
+        }
+      </style>
+
+  </head>
+
+  <body>
+     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+     <strong> <a style="padding:0px 50px 0px 0px" class="navbar-brand" href="{% url 'home' %}">LafargeHolcim</a></strong>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        {% if user.is_authenticated %}
+
+          <h3><a class="btn btn-outline-primary" role="button" href="{% url 'addvacation'  %}"/>Demander Un Conge</a></h3>&nbsp;&nbsp;
+          <h3><a role="button"  class="btn btn-outline-info" href="{% url 'listvacation'%}" >Mes Demandes De Conge</a></h3>&nbsp;&nbsp;
+          {% if user.type == 'CHEF' or user.type == 'DIRECTEUR'  %}
+          <div class="navbar-nav ml-auto" ><h3><a  class="btn btn-danger" role="button" href="{%url 'lesdemande' %}">Demandes A Confirmer</a></h3></div>
+          {% endif %}
+
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ user.username }}
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
+                <a class="dropdown-item" href="{%url 'password_change' %}">Changer Mot De Passe</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'logout' %}">Deconnecter</a>
+              </div>
+            </li>
+          </ul>
+        {% else %}
+          <form class="form-inline ml-auto">
+              <a role="button" class="btn btn-outline-secondary" href="/admin/">Administration</a>&nbsp; &nbsp;
+            <a href="{% url 'login' %}" class="btn btn-outline-secondary">Connecter</a>
+          </form>
+        {% endif %}
+      </div>
+    </nav>
+     <div class="container">
+    {% block content %}
+    {% endblock %}
+     </div>
+  <footer>
+   <div class="fixed-bottom">
+       <strong>&copy;2018 Agalmame</strong>
+   </div>
+  </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="//cdn.bootcss.com/moment.js/2.17.1/moment.min.js"></script>
+     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript">
+      $( function() {
+    $( ".datepicker" ).datepicker();
+      } );
+    </script>
+  </body>
+</html>

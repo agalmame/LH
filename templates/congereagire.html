@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block extrastyle %}
+<style>
+    body {
+    background: #c4dce8;
+}
+</style>
+{% endblock%}
+{% block content %}
+<h2>Reponder</h2>
+ <form method="post">
+     {% csrf_token %}
+      {{form|crispy}}
+     <button class="btn btn-success ml-2"  type="submit">Confirme</button>
+ </form>
+{% endblock %}

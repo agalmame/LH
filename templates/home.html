@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+
+ {% block content %}
+  {% if user.is_authenticated %}
+    <h3 style="color:#212529">Bienvenue {{user.username}} </h3>
+    &nbsp;
+{% if user.calculconge >= 0%}
+<dl class="row">
+    <dt class="col-sm-3 text-truncate"><p style="color:green"> votre droit de Conge est : </p></dt>
+    <dd class="col-sm-9"><strong style="color:green">{{user.calculconge}} jours</strong></dd>
+</dl>
+{% endif%}
+   {% else %}
+<strong><p>Vous etes deconnecter</p></strong>
+  {% endif %}
+ {% endblock %}

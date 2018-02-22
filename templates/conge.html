@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% if error_message%}
+<script>
+    alert("{{error_message}}")
+</script>
+{% endif %}
+ <h2>Demander Un Conge</h2>
+ <div class="form-control col-7">
+  <form method="post" class="form-group ">
+
+      {% csrf_token %}
+      {{form|crispy}}
+     <!-- <div id="datepicker">{{form.dateDebut}}</div>!-->
+      <input class="btn btn-success" type="submit" value="Ajouter"/>
+  </form>
+
+ </div>
+  </form>
+{% endblock %}
